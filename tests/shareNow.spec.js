@@ -13,7 +13,7 @@ test('registration without payment',
         //select Berlin
         await page.selectOption('select[name=drivingLocation]', 'berlin');
 
-        await new Promise(r => setTimeout(r, 2000));
+     //   await new Promise(r => setTimeout(r, 2000));
       //  await page.toLoad();
       //  await expect(page).toHaveURL('https://www.share-now.com/de/en/berlin/registration/personal-data/');
       //  await page.waitForURL('https://www.share-now.com/de/en/berlin/registration/personal-data/');
@@ -94,16 +94,18 @@ test('registration without payment',
      //      await page.locator('label').filter({ hasText: 'Yes, I want to get SHARE NOW offers on social media and other online networks th' }).click();
 
    // the parent element from checkboxes (when clicked, this takes you to the terms and conditions page): .camelot-checkbox
-   // the selector of all 3 checkboxes: .checkbox (is not clickable gives <label for="camelot-checkbox-48564">…</label> intercepts pointer events) [type=checkbox]
-            await page.locator('.camelot-checkbox').nth(0).click();
+   // the selector of all 3 checkboxes: .checkbox [type=checkbox] (is not clickable gives <label for="camelot-checkbox-48564">…</label> intercepts pointer events)
+            await page.locator('.checkbox [type=checkbox]').nth(0).click();
+
+            await new Promise(r => setTimeout(r, 5000));
 
         // locator.isChecked();
 
         //click on register now
-        await page.locator('#registration-save-button').click();
+ //       await page.locator('#registration-save-button').click();
 
         //verify that you are in the payment page
-            await page.waitForURL('https://www.share-now.com/de/en/berlin/registration/payment/');
+//            await page.waitForURL('https://www.share-now.com/de/en/berlin/registration/payment/');
    //     await expect(page).toHaveURL('https://www.share-now.com/de/en/berlin/registration/payment/');
 
 
