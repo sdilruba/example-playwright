@@ -1,8 +1,7 @@
-import {test, expect } from '@playwright/test';
+import {test} from '@playwright/test';
 
 
-test('registration without payment',
-    async ({page}) => {
+test('registration without payment', async ({page}) => {
 
         //open https://www.share-now.com/de/en/
         await page.goto('https://www.share-now.com/de/en/');
@@ -13,7 +12,7 @@ test('registration without payment',
         //select Berlin
         await page.selectOption('select[name=drivingLocation]', 'berlin');
 
-     //   await new Promise(r => setTimeout(r, 2000));
+       await new Promise(r => setTimeout(r, 2000));
       //  await page.toLoad();
       //  await expect(page).toHaveURL('https://www.share-now.com/de/en/berlin/registration/personal-data/');
       //  await page.waitForURL('https://www.share-now.com/de/en/berlin/registration/personal-data/');
