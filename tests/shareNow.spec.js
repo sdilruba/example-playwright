@@ -12,14 +12,10 @@ test('registration without payment', async ({page}) => {
         //select Berlin
         await page.selectOption('select[name=drivingLocation]', 'berlin');
 
-       await new Promise(r => setTimeout(r, 2000));
-      //  await page.toLoad();
-      //  await expect(page).toHaveURL('https://www.share-now.com/de/en/berlin/registration/personal-data/');
-      //  await page.waitForURL('https://www.share-now.com/de/en/berlin/registration/personal-data/');
-      //  await page.locator('input[name=email]').isEditable();
+        // to debug easier
+        await new Promise(r => setTimeout(r, 2000));
 
         //type random email
-        // await page.locator('input[name=email]').click();
         await page.locator('input[name=email]').fill(Math.floor(Math.random() * 1000000000) + '@dummyaddress.com');
 
         //type password (must be between 5-25 characters)
@@ -60,53 +56,22 @@ test('registration without payment', async ({page}) => {
 
 
         //type random phone number
-   /*
-        let num = Math.floor(100000000 + Math.random() * 900000000);
-        let text = num.toString();
+        await page.locator('input[name=mobilePhone]').type(Math.floor(100000000 + Math.random() * 900000000).toString());
+
+        //check the first checkbox
+        await page.locator('.checkbox [type=checkbox]').nth(0).click();
+
+        // to debug easier
+        await new Promise(r => setTimeout(r, 5000));
+
+
+    /*
+        click on register now
+        wait page.locator('#registration-save-button').click();
+
+        verify that you are in the payment page
+        await page.waitForURL('https://www.share-now.com/de/en/berlin/registration/payment/');
     */
-            await page.locator('input[name=mobilePhone]').type(Math.floor(100000000 + Math.random() * 900000000).toString());
-
-
-
-
-        //create a locator of first checkbox (all three checkboxes: input[type=checkbox])
-     //    const checkBoxOne = await page.locator('.checkbox [type=checkbox]');
-      //  checkBoxOne.first(checkBoxOne) |> checkBoxOne.click();
-       // const checkBoxes = [];
-      //  checkBoxes.push(page.locator('.checkbox [type=checkbox]'));
-        // checkBoxes.forEach(page.locator('.checkbox [type=checkbox]'));
-        //   await checkBoxOne.check();
-
-
-     //   checkBoxes[0].click();
-     //       await page.$('.checkbox [type=checkbox]', strict=false).click();
-
-        //check the second checkbox
-    //      await page.locator('//input[@type="checkbox"][1]').click();
-
-        //check the state of the first checkbox
-        //  expect(await checkBoxOne.isChecked()).toBeTruthy();
-
-    //    await page.getByText('I accept the terms and conditions of SHARE NOW GmbH.').click();
-
-            //click on the third checkbox
-     //      await page.locator('label').filter({ hasText: 'Yes, I want to get SHARE NOW offers on social media and other online networks th' }).click();
-
-   // the parent element from checkboxes (when clicked, this takes you to the terms and conditions page): .camelot-checkbox
-   // the selector of all 3 checkboxes: .checkbox [type=checkbox] (is not clickable gives <label for="camelot-checkbox-48564">…</label> intercepts pointer events)
-            await page.locator('.checkbox [type=checkbox]').nth(0).click();
-
-            await new Promise(r => setTimeout(r, 5000));
-
-        // locator.isChecked();
-
-        //click on register now
- //       await page.locator('#registration-save-button').click();
-
-        //verify that you are in the payment page
-//            await page.waitForURL('https://www.share-now.com/de/en/berlin/registration/payment/');
-   //     await expect(page).toHaveURL('https://www.share-now.com/de/en/berlin/registration/payment/');
-
 
 
     });
