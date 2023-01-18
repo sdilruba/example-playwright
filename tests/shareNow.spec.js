@@ -6,17 +6,22 @@ test('registration without payment', async ({page}) => {
         //open https://www.share-now.com/de/en/
         await page.goto('https://www.share-now.com/de/en/');
 
+        await page.locator('[data-testid=uc-accept-all-button]').click();
+
         // click to register now
         await page.locator('.primary-navbar__actions #reggie-link-register-now').click();
 
         //select Berlin
         await page.selectOption('select[name=drivingLocation]', 'berlin');
 
-        //to debug easier
-        await new Promise(r => setTimeout(r, 3000));
+        //confirm the URL has changed after the city selection
+        await page.waitForURL('https://www.share-now.com/de/en/berlin/registration/personal-data/');
+
+        await page.locator('input[name=email]').waitFor();
 
         //type random email
-        await page.locator('input[name=email]').fill(Math.floor(Math.random() * 1000000000) + '@dummyaddress.com');
+        const email = Math.floor(Math.random() * 1000000000) + '@dummyaddress.com';
+        await page.locator('input[name=email]').fill(email);
 
         //type password (must be between 5-25 characters)
         await page.fill('input[name=password]','12365');
