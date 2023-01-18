@@ -12,8 +12,8 @@ test('registration without payment', async ({page}) => {
         //select Berlin
         await page.selectOption('select[name=drivingLocation]', 'berlin');
 
-        // to debug easier
-        await new Promise(r => setTimeout(r, 2000));
+        //to debug easier
+        await new Promise(r => setTimeout(r, 3000));
 
         //type random email
         await page.locator('input[name=email]').fill(Math.floor(Math.random() * 1000000000) + '@dummyaddress.com');
@@ -54,24 +54,17 @@ test('registration without payment', async ({page}) => {
         //type city
         await page.locator('input[name=addressCity]').type('Berlin');
 
-
         //type random phone number
         await page.locator('input[name=mobilePhone]').type(Math.floor(100000000 + Math.random() * 900000000).toString());
 
         //check the first checkbox
-        await page.locator('.checkbox [type=checkbox]').nth(0).click();
+        const firstCheckBox = await page.locator('.checkbox [type=checkbox]').nth(0);
+        await firstCheckBox.click({ force: true });
 
-        // to debug easier
-        await new Promise(r => setTimeout(r, 5000));
+        //click on register now
+        await page.locator('#registration-save-button').click();
 
-
-    /*
-        click on register now
-        wait page.locator('#registration-save-button').click();
-
-        verify that you are in the payment page
+        //verify that you are in the payment page
         await page.waitForURL('https://www.share-now.com/de/en/berlin/registration/payment/');
-    */
-
 
     });
