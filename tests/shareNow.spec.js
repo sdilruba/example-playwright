@@ -1,4 +1,4 @@
-import {test, expect} from '@playwright/test';
+import {expect, test} from '@playwright/test';
 import PersonalDataPage from '../tests/pages/PersonalDataPage'; // your Path of the page object class
 import HomePage from "./pages/HomePage";
 
