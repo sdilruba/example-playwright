@@ -1,54 +1,53 @@
-import {test, expect } from '@playwright/test';
+import {test, expect} from '@playwright/test';
 
 test('registration without payment', async ({page}) => {
 
-        await page.goto('https://www.share-now.com/de/en/');
+    await page.goto('https://www.share-now.com/de/en/');
 
-        await page.locator('[data-testid=uc-accept-all-button]').click();
+    await page.locator('[data-testid=uc-accept-all-button]').click();
 
-        await page.locator('.primary-navbar__actions #reggie-link-register-now').click();
+    await page.locator('.primary-navbar__actions #reggie-link-register-now').click();
 
-        await page.selectOption('select[name=drivingLocation]', 'berlin');
+    await page.selectOption('select[name=drivingLocation]', 'berlin');
 
-        await page.waitForURL('https://www.share-now.com/de/en/berlin/registration/personal-data/');
+    await page.waitForURL('https://www.share-now.com/de/en/berlin/registration/personal-data/');
 
-        await page.locator('input[name=email]').waitFor();
+    await page.locator('input[name=email]').waitFor();
 
-        const randomEmail = Math.floor(Math.random() * 1000000000) + '@dummyaddress.com';
-        await page.locator('input[name=email]').fill(randomEmail);
+    const randomEmail = Math.floor(Math.random() * 1000000000) + '@dummyaddress.com';
+    await page.locator('input[name=email]').fill(randomEmail);
 
-        //Password must be between 5-25 characters
-        await page.fill('input[name=password]','12365');
+    await page.fill('input[name=password]', '12365');
 
-        await page.locator('input[name=pin]').fill('4567');
+    await page.locator('input[name=pin]').fill('4567');
 
-        await page.locator('select[name=salutation]').selectOption({label: 'Mrs.'});
+    await page.locator('select[name=salutation]').selectOption({label: 'Mrs.'});
 
-        await page.locator('input[name=firstName]').type('Dilruba');
+    await page.locator('input[name=firstName]').type('Dilruba');
 
-        await page.locator('input[name=lastName]').type('Sarican');
+    await page.locator('input[name=lastName]').type('Sarican');
 
-        await page.selectOption('#camelot-select-birth-date-day', '9');
+    await page.selectOption('#camelot-select-birth-date-day', '9');
 
-        await page.locator('#camelot-select-birth-date-month').selectOption({label: 'November'});
+    await page.locator('#camelot-select-birth-date-month').selectOption({label: 'November'});
 
-        await page.selectOption('#camelot-select-birth-date-year', '1997');
+    await page.selectOption('#camelot-select-birth-date-year', '1997');
 
-        await page.locator('input[name=birthPlace]').type('Berlin');
+    await page.locator('input[name=birthPlace]').type('Berlin');
 
-        await page.locator('input[name=addressStreet]').type('Baumschulenstraße 45');
+    await page.locator('input[name=addressStreet]').type('Baumschulenstraße 45');
 
-        await page.locator('input[name=addressZipCode]').type('12437');
+    await page.locator('input[name=addressZipCode]').type('12437');
 
-        await page.locator('input[name=addressCity]').type('Berlin');
+    await page.locator('input[name=addressCity]').type('Berlin');
 
-        const randomPhoneNumber = Math.floor(100000000 + Math.random() * 9000000000).toString();
-        await page.locator('input[name=mobilePhone]').type(randomPhoneNumber);
+    const randomPhoneNumber = Math.floor(100000000 + Math.random() * 9000000000).toString();
+    await page.locator('input[name=mobilePhone]').type(randomPhoneNumber);
 
-        const termsAndConditions = await page.locator('.checkbox [type=checkbox]').nth(0);
-        await termsAndConditions.click({ force: true });
+    const termsAndConditions = await page.locator('.checkbox [type=checkbox]').nth(0);
+    await termsAndConditions.click({force: true});
 
-        await page.locator('#registration-save-button').click();
+    await page.locator('#registration-save-button').click();
 
-        await expect(page).toHaveURL(/payment/);
-    });
+    await expect(page).toHaveURL(/payment/);
+});
