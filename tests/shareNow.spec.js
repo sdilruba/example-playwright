@@ -1,6 +1,9 @@
 import {test, expect} from '@playwright/test';
+import PersonalDataPage from '../tests/pages/PersonalDataPage'; // your Path of the page object class
 
 test('registration without payment', async ({page}) => {
+
+    const personalDataPage = new PersonalDataPage();
 
     await page.goto('https://www.share-now.com/de/en/');
 
@@ -8,14 +11,14 @@ test('registration without payment', async ({page}) => {
 
     await page.locator('.primary-navbar__actions #reggie-link-register-now').click();
 
-    await page.selectOption('select[name=drivingLocation]', 'berlin');
+    await page.selectOption(personalDataPage.drivingLocation, 'berlin');
 
     await page.waitForURL('https://www.share-now.com/de/en/berlin/registration/personal-data/');
 
     await page.locator('input[name=email]').waitFor();
 
     const randomEmail = Math.floor(Math.random() * 1000000000) + '@dummyaddress.com';
-    await page.locator('input[name=email]').fill(randomEmail);
+    await page.locator(personalDataPage.emailInput).fill(randomEmail);
 
     await page.fill('input[name=password]', '12365');
 
