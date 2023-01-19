@@ -42,8 +42,8 @@ test('registration without payment', async ({page}) => {
 
         await page.locator('input[name=addressCity]').type('Berlin');
 
-        const randomPhoneNumber = Math.floor(100000000 + Math.random() * 900000000).toString();
-        await page.locator('input[name=mobilePhone]').fill(randomPhoneNumber);
+        const randomPhoneNumber = Math.floor(100000000 + Math.random() * 9000000000).toString();
+        await page.locator('input[name=mobilePhone]').type(randomPhoneNumber);
 
         const termsAndConditions = await page.locator('.checkbox [type=checkbox]').nth(0);
         await termsAndConditions.click({ force: true });
