@@ -17,7 +17,7 @@ test('registration without payment', async ({page}) => {
         const randomEmail = Math.floor(Math.random() * 1000000000) + '@dummyaddress.com';
         await page.locator('input[name=email]').fill(randomEmail);
 
-        //password must be between 5-25 characters
+        //Password must be between 5-25 characters
         await page.fill('input[name=password]','12365');
 
         await page.locator('input[name=pin]').fill('4567');
