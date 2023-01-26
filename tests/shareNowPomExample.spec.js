@@ -6,4 +6,6 @@ test('first part of registration', async ({page}) => {
     const personalDataPage = new PersonalDataPage(page);
     const homePage = new HomePage(page);
     await homePage.goto();
+    await homePage.acceptCookies();
+    await homePage.startRegistration();
 });
