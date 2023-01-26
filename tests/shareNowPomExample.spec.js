@@ -1,7 +1,9 @@
 const { test, expect } = require('@playwright/test');
-const { PlaywrightDevPage } = require('../tests/pages/playwright-dev-page');
+const { PersonalDataPage } = require('./example2/pages/PersonalDataPage');
+const { HomePage } = require('./example2/pages/HomePage');
 
 test('first part of registration', async ({page}) => {
-    const playwrightDev = new PlaywrightDevPage(page);
-    await playwrightDev.goto();
+    const personalDataPage = new PersonalDataPage(page);
+    const homePage = new HomePage(page);
+    await homePage.goto();
 });

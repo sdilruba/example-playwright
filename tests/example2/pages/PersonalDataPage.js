@@ -1,11 +1,7 @@
-// playwright-dev-page.js
 const {expect} = require('@playwright/test');
 
-exports.PlaywrightDevPage = class PlaywrightDevPage {
+exports.PersonalDataPage = class PersonalDataPage {
 
-    /**
-     * @param {import('@playwright/test').Page} page
-     */
     constructor(page) {
         this.page = page;
         this.drivingLocation = page.locator(`select[name=drivingLocation]`);
@@ -25,9 +21,5 @@ exports.PlaywrightDevPage = class PlaywrightDevPage {
         this.mobilePhoneInput = page.locator('input[name=mobilePhone]');
         this.registrationCheckboxes = page.locator('.checkbox [type=checkbox]');
         this.registrationButton = page.locator('#registration-save-button');
-    }
-
-    async goto() {
-        await this.page.goto('https://www.share-now.com/de/en/berlin/registration/personal-data/');
     }
 }

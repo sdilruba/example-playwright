@@ -1,6 +1,6 @@
 import {expect, test} from '@playwright/test';
-import PersonalDataPage from '../tests/pages/PersonalDataPage'; // your Path of the page object class
-import HomePage from "./pages/HomePage";
+import PersonalDataPage from './example1/pages/PersonalDataPage';
+import HomePage from "./example1/pages/HomePage";
 
 test('registration without payment', async ({page}) => {
 
