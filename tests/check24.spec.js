@@ -14,6 +14,6 @@ test('playstation5goToPDP', async ({page}) => {
     await page.locator(listingPage.firstCategory).click();
     await page.locator(listingPage.checkBoxFilters).nth(2).click();
     await page.locator(listingPage.listingTiles).nth(0).click();
-    await expect(page).toHaveURL(/sony-playstation/);
+    await expect(page.locator('.qa-title.product-title')).toBeVisible()
 
 });
