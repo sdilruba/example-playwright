@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
-const { PersonalDataPage } = require('./pages/PersonalDataPage');
-const { HomePage } = require('./pages/HomePage');
+const { PersonalDataPage } = require('./example2/pages/PersonalDataPage');
+const { HomePage } = require('./example2/pages/HomePage');
 const {UserTestData} = require("../utils/UsertestData");
 
 test('first step of registration', async ({page}) => {

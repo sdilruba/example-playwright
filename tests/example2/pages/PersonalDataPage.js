@@ -24,8 +24,8 @@ exports.PersonalDataPage = class PersonalDataPage {
     }
 
     async selectCityForRegistration() {
-        await this.drivingLocation.selectOption({label: 'berlin'});
-        await page.waitForLoadState('networkidle');
+        await this.drivingLocation.selectOption({label: 'Berlin'});
+        await this.page.waitForLoadState('networkidle');
     }
     async enterPersonalDataDetails(testUser) {
         await this.emailInput.fill(testUser.email);
@@ -34,23 +34,20 @@ exports.PersonalDataPage = class PersonalDataPage {
         await this.salutationInput.selectOption({label: testUser.salutation});
         await this.firstNameInput.type(testUser.firstName);
         await this.lastNameInput.type(testUser.lastName);
-        await this.birthDayInput.selectOption(testUser.dayOfBirhday);
-        await this.birthMonthInput.selectOption(testUser.monthOfBirhday);
-        await this.birthYearInput.selectOption(testUser.yearOfBirhday);
+        await this.birthDayInput.selectOption(testUser.dayOfBirthday);
+        await this.birthMonthInput.selectOption(testUser.monthOfBirthday);
+        await this.birthYearInput.selectOption(testUser.yearOfBirthday);
         await this.birthPlaceInput.fill(testUser.birthPlace);
         await this.addressStreetInput.type(testUser.addressStreet);
-        await this.addressZipcodeInput.type(testUser.zipcode);
+        await this.addressZipcodeInput.type(testUser.zipCode);
         await this.addressCityInput.type(testUser.city);
-        await this.mobilePhoneInput.fill(testUser.phoneNumber);
-    }
-    async checkRegistrationCheckboxes(nthCheckbox){
-        await this.registrationCheckboxes.nth(nthCheckbox).click({force: true});
+        await this.mobilePhoneInput.type(testUser.phoneNumber);
     }
     async acceptGlobalTerms() {
         const termsAndConditionsCheckbox = await this.registrationCheckboxes.nth(0);
         await termsAndConditionsCheckbox.click({force: true});
     }
     async createAccount(){
-        await this.registrationButton.click;
+        await this.registrationButton.click();
     }
 }
