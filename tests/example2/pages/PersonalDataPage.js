@@ -22,4 +22,35 @@ exports.PersonalDataPage = class PersonalDataPage {
         this.registrationCheckboxes = page.locator('.checkbox [type=checkbox]');
         this.registrationButton = page.locator('#registration-save-button');
     }
+
+    async selectCityForRegistration() {
+        await this.drivingLocation.selectOption({label: 'berlin'});
+        await page.waitForLoadState('networkidle');
+    }
+    async enterPersonalDataDetails(testUser) {
+        await this.emailInput.fill(testUser.email);
+        await this.passwordInput.fill(testUser.password);
+        await this.pinInput.fill(testUser.pin);
+        await this.salutationInput.selectOption({label: testUser.salutation});
+        await this.firstNameInput.type(testUser.firstName);
+        await this.lastNameInput.type(testUser.lastName);
+        await this.birthDayInput.selectOption(testUser.dayOfBirhday);
+        await this.birthMonthInput.selectOption(testUser.monthOfBirhday);
+        await this.birthYearInput.selectOption(testUser.yearOfBirhday);
+        await this.birthPlaceInput.fill(testUser.birthPlace);
+        await this.addressStreetInput.type(testUser.addressStreet);
+        await this.addressZipcodeInput.type(testUser.zipcode);
+        await this.addressCityInput.type(testUser.city);
+        await this.mobilePhoneInput.fill(testUser.phoneNumber);
+    }
+    async checkRegistrationCheckboxes(nthCheckbox){
+        await this.registrationCheckboxes.nth(nthCheckbox).click({force: true});
+    }
+    async acceptGlobalTerms() {
+        const termsAndConditionsCheckbox = await this.registrationCheckboxes.nth(0);
+        await termsAndConditionsCheckbox.click({force: true});
+    }
+    async createAccount(){
+        await this.registrationButton.click;
+    }
 }
