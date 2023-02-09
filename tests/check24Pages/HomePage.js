@@ -10,7 +10,7 @@ class HomePage {
 
     //My Account Pop-Up Screen
     signIn = '#c24-meinkonto-anmelden';
-    register = '.c24-uli-cl-r-start-trigger';
+    createAccountButton = 'a.c24-uli-cl-r-start-trigger';
     emailOrPhoneNumberInput = '#cl_login';
     continueButton = 'c24-uli-login-btn';
 
