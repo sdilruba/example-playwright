@@ -1,5 +1,7 @@
 class RegistrationFrame{
 
+    registrationFrame = '.c24-uli-loginlayer-iframe';
+
     //My Account Pop-Up Screen
     signIn = '#c24-meinkonto-anmelden';
     createAccountButton = 'a.c24-uli-cl-r-start-trigger';
