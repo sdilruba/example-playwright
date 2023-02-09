@@ -12,7 +12,7 @@ class HomePage {
     signIn = '#c24-meinkonto-anmelden';
     createAccountButton = 'a.c24-uli-cl-r-start-trigger';
     emailOrPhoneNumberInput = '#cl_login';
-    continueButton = 'c24-uli-login-btn';
+    continueButton = 'button.c24-uli-button#c24-uli-login-btn';
 
     //Register screen
     firstNameInput = '#cl_ul_firstname';
@@ -22,7 +22,7 @@ class HomePage {
     submitButton = '#c24-uli-register-btn';
 
     //Registration Confirmation Screen
-    confirmationCodeTitle = '.c24-uli-title';
+    changeEmailButton = '.c24-uli-user-change';
 
 }
 
