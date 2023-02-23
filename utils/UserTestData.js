@@ -21,7 +21,7 @@ export class UserTestData {
     }
 
     getRandomEmail() {
-        return `josenunezumi+${this.getCurrentTime()}@gmail.rofl`
+        return `jorumi+${this.getCurrentTime()}@gmail.rofl`
     }
 
     getCurrentTime() {
