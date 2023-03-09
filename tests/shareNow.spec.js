@@ -1,17 +1,13 @@
 import {expect, test} from '@playwright/test';
 import PersonalDataPage from './example1/pages/PersonalDataPage';
-import HomePage from "./example1/pages/HomePage";
 
 test('registration without payment', async ({page}) => {
 
     const personalDataPage = new PersonalDataPage();
-    const homePage = new HomePage();
 
-    await page.goto(homePage.pageURL);
+    await page.goto(personalDataPage.pageURL);
 
-    await page.locator(homePage.acceptCookies).click();
-
-    await page.locator(homePage.signUpButton).click();
+//    await page.locator(homePage.acceptCookies).click();
 
     await page.selectOption(personalDataPage.drivingLocation, 'berlin');
 
