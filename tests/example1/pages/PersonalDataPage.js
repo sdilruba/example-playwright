@@ -1,6 +1,6 @@
 class PersonalDataPage {
 
-    pageURL = 'https://www.share-now.com/de/en/berlin/registration/personal-data/';
+    pageURL = 'https://www.int.share-now.com/de/en/berlin/registration/personal-data';
     drivingLocation = `select[name=drivingLocation]`;
     emailInput = `input[name=email]`;
     passwordInput = 'input[name=password]';
